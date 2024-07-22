@@ -1,0 +1,18 @@
+{
+    "def_pth_name": "kiki",
+    "def_img_font_size": 50,
+    "def_img_font_color": "black",
+    "pitch": 0,
+    "block_time": 0.15,
+    "threshold": -60,
+    "crossfade_time": 0.15,
+    "extra_time": 3.0,
+    "I_noise_reduce": false,
+    "O_noise_reduce": false,
+    "index_rate": 0.0,
+    "n_cpu": 4,
+    "f0method": 3,
+    "input_devices": "VoiceMeeter Output (VB-Audio Vo (MME)",
+    "output_devices": "VoiceMeeter Aux Input (VB-Audio (MME)",
+    "theme": "litera"
+}

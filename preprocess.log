@@ -1,0 +1,6 @@
+start preprocess
+['trainset_preprocess_pipeline_print.py', 'inputs', '40000', '6', '.', 'test']
+inputs/002 老板娘的寂寞深夜--小烟_3.wav->Suc.
+inputs/002 老板娘的寂寞深夜--小烟_2.wav->Suc.
+inputs/002 老板娘的寂寞深夜--小烟_1.wav->Suc.
+end preprocess
