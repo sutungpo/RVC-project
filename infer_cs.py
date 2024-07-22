@@ -12,6 +12,7 @@ now_dir = os.getcwd()
 sys.path.append(now_dir)
 
 import logging
+
 logging.getLogger("numba").setLevel(logging.WARNING)
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
@@ -27,8 +28,9 @@ torch.manual_seed(114514)
 config = Config()
 vc = VC(config)
 
+
 def preprocess_dataset(trainset_dir, exp_dir, sr, n_p):
-    """ 
+    """
     norm_write audios in trainset_dir to logs/exp_dir
     trainset_dir: str, the audio data dir name; exp_dir: str, directory name to save exp results in logs;
     sr: str, sample rate e.g. '40k', '32k', '48k' ; n_p: int, 处理数据使用的CPU进程数
@@ -78,7 +80,10 @@ def extract_f0_feature(gpus, n_p, f0method, if_f0, exp_dir, version19):
                 version19,
             )
         )
-        subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd = now_dir)
+        subprocess.run(
+            cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=now_dir
+        )
+
 
 def train1key(
     exp_dir1,
@@ -103,7 +108,7 @@ def train1key(
     exp_dir1: str, directory name to save exp results in logs; sr2: str, sample rate 40k, 48k
     if_f0_3: bool, 模型是否带音高指导(唱歌一定要, 语音可以不要), default value True; trainset_dir4: str, the audio data dir name;
     spk_id5: int, speaker id default 0; np7: int, 处理数据使用的CPU进程数; f0method8: str, f0 extraction method, default value "harvest";
-    save_epoch10: int, save model every epoch, default 5; total_epoch11: int, total training epoch, default 20; 
+    save_epoch10: int, save model every epoch, default 5; total_epoch11: int, total training epoch, default 20;
     batch_size12: int, batch size, default half of gpu memory in G; if_save_latest13: bool, save latest model to save space, default False;
     pretrained_G14: str, 底模G路径, default "pretrained/f0G40k.pth"; pretrained_D15: str, 底模D路径, default "pretrained/f0D40k.pth";
     gpus16: str, gpu ids, e.g. "0-1"; if_cache_gpu17: bool, 是否缓存所有训练集至显存, default False;
@@ -229,7 +234,9 @@ def train1key(
     yield get_info_str(cmd)
     p = Popen(cmd, shell=True, cwd=now_dir)
     p.wait()
-    yield get_info_str(i18n("训练结束, 您可查看控制台训练日志或实验文件夹下的train.log"))
+    yield get_info_str(
+        i18n("训练结束, 您可查看控制台训练日志或实验文件夹下的train.log")
+    )
 
     #######step3b:训练索引
     npys = []
